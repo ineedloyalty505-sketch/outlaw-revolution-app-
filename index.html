@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outlaw Revolution - Money Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Header */
+        .header {
+            background: #000;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 3px solid #d4af37;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            color: #d4af37;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            font-size: 12px;
+            color: #d4af37;
+        }
+        
+        /* Earnings Display */
+        .earnings-box {
+            background: #d4af37;
+            color: #000;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .earnings-label {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .earnings-amount {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .earnings-subtext {
+            font-size: 12px;
+            font-style: italic;
+        }
+        
+        /* Content */
+        .content {
+            padding: 15px;
+            padding-bottom: 80px;
+        }
+        
+        /* Sections */
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #d4af37;
+            margin: 20px 0 10px 0;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 10px;
+        }
+        
+        /* Cards */
+        .card {
+            background: #2a2a2a;
+            border: 1px solid #d4af37;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .card h3 {
+            color: #d4af37;
+            margin-bottom: 8px;
+        }
+        
+        .card p {
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+        
+        .card-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #d4af37;
+            margin: 10px 0;
+        }
+        
+        .btn {
+            background: #d4af37;
+            color: #000;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        .btn:hover {
+            background: #e5c158;
+        }
+        
+        /* Hashtags */
+        .hashtags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .hashtag {
+            background: #1a1a1a;
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #000;
+            border-top: 2px solid #d4af37;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+        
+        .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            color: #d4af37;
+            font-weight: 600;
+            font-size: 12px;
+            border-top: 3px solid transparent;
+        }
+        
+        .nav-item.active {
+            border-top-color: #d4af37;
+        }
+        
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Alert */
+        .alert {
+            background: #d4af37;
+            color: #000;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🔥 OUTLAW REVOLUTION 🔥</h1>
+            <p>EST. 2026 - Real recognize real</p>
+        </div>
+        
+        <!-- Earnings Display -->
+        <div class="earnings-box">
+            <div class="earnings-label">Total Earnings</div>
+            <div class="earnings-amount" id="earnings">$0.00</div>
+            <div class="earnings-subtext">Real recognize real</div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <!-- Home Tab -->
+            <div id="home" class="tab-content active">
+                <div class="alert">🚀 Your backend is LIVE and generating revenue!</div>
+                
+                <!-- Premium Section -->
+                <div class="section-title">💎 Premium Membership</div>
+                <div class="card">
+                    <h3>Unlock Exclusive Benefits</h3>
+                    <p>Join 10,000+ outlaws building their empire</p>
+                    <div class="card-price">$9.99/month</div>
+                    <p style="font-size: 12px;">
+                        ✓ Exclusive content<br>
+                        ✓ Higher commissions<br>
+                        ✓ Priority support<br>
+                        ✓ VIP community access
+                    </p>
+                    <button class="btn" onclick="handlePremium()">Subscribe Now</button>
+                </div>
+                
+                <!-- Affiliate Section -->
+                <div class="section-title">💰 Earn Commissions</div>
+                <div class="card">
+                    <h3>Amazon Associates</h3>
+                    <p>Earn 5% on every sale</p>
+                    <button class="btn" onclick="handleAffiliate('amazon')">Start Earning</button>
+                </div>
+                <div class="card">
+                    <h3>ClickBank</h3>
+                    <p>Earn up to 75% commission</p>
+                    <button class="btn" onclick="handleAffiliate('clickbank')">Start Earning</button>
+                </div>
+                
+                <!-- Marketplace Section -->
+                <div class="section-title">🛍️ Marketplace</div>
+                <div class="card">
+                    <h3>Outlaw Mindset Course</h3>
+                    <p>Master the outlaw hustle</p>
+                    <div class="card-price">$97</div>
+                    <button class="btn" onclick="handleProduct('course')">Buy Now</button>
+                </div>
+                <div class="card">
+                    <h3>Freedom Blueprint</h3>
+                    <p>Build your empire</p>
+                    <div class="card-price">$47</div>
+                    <button class="btn" onclick="handleProduct('blueprint')">Buy Now</button>
+                </div>
+                
+                <!-- Hashtags -->
+                <div class="section-title">📱 Join the Movement</div>
+                <div class="hashtags">
+                    <span class="hashtag">#OutlawRevolution</span>
+                    <span class="hashtag">#GetRightOrGetLeft</span>
+                    <span class="hashtag">#RealRecognizeReal</span>
+                    <span class="hashtag">#StartedFromTheBottom</span>
+                    <span class="hashtag">#ThankYouForCreatingWomen</span>
+                    <span class="hashtag">#Everyone</span>
+                    <span class="hashtag">#CanYouDigIt</span>
+                    <span class="hashtag">#Nuevo</span>
+                </div>
+            </div>
+            
+            <!-- Community Tab -->
+            <div id="community" class="tab-content">
+                <div class="section-title">👥 Community</div>
+                <div class="card">
+                    <h3>Join 10,000+ Outlaws</h3>
+                    <p>Connect with forward thinkers and rebels building their empire</p>
+                    <button class="btn" onclick="alert('Community features coming soon!')">Join Community</button>
+                </div>
+            </div>
+            
+            <!-- Profile Tab -->
+            <div id="profile" class="tab-content">
+                <div class="section-title">👤 Your Profile</div>
+                <div class="card">
+                    <h3>Total Earned This Month</h3>
+                    <div class="card-price" id="profile-earnings">$0.00</div>
+                </div>
+                <div class="card">
+                    <h3>Commissions</h3>
+                    <div class="card-price">$0.00</div>
+                </div>
+                <div class="card">
+                    <h3>Account Settings</h3>
+                    <button class="btn" onclick="alert('Settings coming soon!')">Manage Account</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <div class="nav-item active" onclick="switchTab('home')">🏠 Home</div>
+            <div class="nav-item" onclick="switchTab('community')">👥 Community</div>
+            <div class="nav-item" onclick="switchTab('profile')">👤 Profile</div>
+        </div>
+    </div>
+    
+    <script>
+        const API_URL = 'https://outlawrevolution-app.railway.app';
+        
+        // Load earnings on startup
+        window.addEventListener('load', () => {
+            loadEarnings();
+            playThemeSong();
+        });
+        
+        // Load earnings from backend
+        async function loadEarnings() {
+            try {
+                const response = await fetch(`${API_URL}/api/earnings`);
+                const data = await response.json();
+                const total = data.total || 0;
+                document.getElementById('earnings').textContent = '$' + total.toFixed(2);
+                document.getElementById('profile-earnings').textContent = '$' + total.toFixed(2);
+            } catch (error) {
+                console.error('Error loading earnings:', error);
+                document.getElementById('earnings').textContent = '$0.00';
+            }
+        }
+        
+        // Play theme song
+        function playThemeSong() {
+            // Theme song would play here if audio file is available
+            console.log('Theme song playing...');
+        }
+        
+        // Handle premium signup
+        function handlePremium() {
+            alert('Premium Membership: $9.99/month\n\nClick OK to proceed with payment');
+            processPayment(9.99, 'premium');
+        }
+        
+        // Handle affiliate
+        function handleAffiliate(type) {
+            alert('You earned $5.00 commission!\n\nThank you for promoting ' + type);
+            trackAffiliate(type, 5.00);
+        }
+        
+        // Handle product purchase
+        function handleProduct(product) {
+            const prices = { course: 97, blueprint: 47 };
+            const price = prices[product] || 0;
+            alert('Product: ' + product + '\nPrice: $' + price + '\n\nClick OK to proceed with payment');
+            processPayment(price, 'product');
+        }
+        
+        // Process payment
+        async function processPayment(amount, type) {
+            try {
+                const response = await fetch(`${API_URL}/api/payments`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        amount: amount,
+                        token: 'test_token',
+                        type: type
+                    })
+                });
+                const data = await response.json();
+                if (data.success) {
+                    alert('✅ Payment successful!\nYour earnings have been updated.');
+                    loadEarnings();
+                } else {
+                    alert('❌ Payment failed. Try again.');
+                }
+            } catch (error) {
+                alert('❌ Error processing payment: ' + error.message);
+            }
+        }
+        
+        // Track affiliate
+        async function trackAffiliate(affiliateId, commission) {
+            try {
+                const response = await fetch(`${API_URL}/api/affiliate`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        affiliateId: affiliateId,
+                        commission: commission
+                    })
+                });
+                const data = await response.json();
+                if (data.success) {
+                    loadEarnings();
+                }
+            } catch (error) {
+                console.error('Error tracking affiliate:', error);
+            }
+        }
+        
+        // Switch tabs
+        function switchTab(tab) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Remove active from nav items
+            document.querySelectorAll('.nav-item').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tab).classList.add('active');
+            
+            // Add active to nav item
+            event.target.classList.add('active');
+        }
+        
+        // Refresh earnings every 30 seconds
+        setInterval(loadEarnings, 30000);
+    </script>
+</body>
+</html>
